@@ -18,13 +18,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            tmp()
+            Home()
         }
     }
 }
 
 
-@Composable
-fun tmp(){
-    Text("hello")
-}
