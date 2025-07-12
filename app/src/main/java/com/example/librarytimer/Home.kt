@@ -18,12 +18,15 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.librarytimer.ui.theme.BackGroundColor
 
 @Composable
@@ -33,64 +36,100 @@ fun Home(){
             .fillMaxSize()
             .background(BackGroundColor)
     ){
-        Row(
+        SettingIcon()
+        Timer()
+        HomeText()
+    }
+}
+
+@Composable
+fun SettingIcon(){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.End
+    ){
+        Button(
+            colors = ButtonColors(
+                containerColor = Color.Transparent,
+                contentColor = Color.Transparent,
+                disabledContentColor = Color.Transparent,
+                disabledContainerColor = Color.Transparent
+            ),
+            onClick = {},
+            shape = CircleShape,
+            contentPadding = PaddingValues(0.dp),
             modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.End
+                .size(25.dp)
+                .offset(
+                    x = -20.dp,
+                    y = 40.dp
+                )
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.setting_icon),
+                contentDescription = "설정 아이콘입니다.",
+                tint = Color.White,
+                modifier = Modifier
+                    .size(25.dp)
+                    .clickable {  }
+            )
+        }
+    }
+}
+
+@Composable
+fun Timer(){
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .offset(
+                y = -80.dp
+            )
+        ,
+        verticalArrangement = Arrangement.Center
+    ){
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
         ){
             Button(
-                onClick = {}
+                colors = ButtonColors(
+                    contentColor = Color.Transparent,
+                    containerColor = Color.Transparent,
+                    disabledContainerColor = Color.Transparent,
+                    disabledContentColor = Color.Transparent
+                ),
+                onClick = {},
+                shape = CircleShape,
+                contentPadding = PaddingValues(0.dp),
+                modifier = Modifier
+                    .size(150.dp)
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.setting_icon),
-                    contentDescription = "설정 아이콘입니다.",
-                    tint = Color.White,
-                    modifier = Modifier
-                        .size(25.dp)
-                        .offset(
-                            x = -30.dp,
-                            y = 30.dp
-                        )
-                        .clickable {  }
-                )
-            }
-        }
-
-        Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .offset(
-                    y = -50.dp
-                )
-            ,
-            verticalArrangement = Arrangement.Center
-        ){
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
-            ){
-                Button(
-                    colors = ButtonColors(
-                        contentColor = Color.Transparent,
-                        containerColor = Color.Transparent,
-                        disabledContainerColor = Color.Transparent,
-                        disabledContentColor = Color.Transparent
-                    ),
-                    onClick = {},
-                    shape = CircleShape,
-                    contentPadding = PaddingValues(0.dp),
+                Image(
+                    painter = painterResource(R.drawable.clock),
+                    contentDescription = "타이머 시작 버튼입니다. 타이머를 시작하려면 버튼을 클릭해주세요.",
                     modifier = Modifier
                         .size(150.dp)
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.clock),
-                        contentDescription = "타이머 시작 버튼입니다. 타이머를 시작하려면 버튼을 클릭해주세요.",
-                        modifier = Modifier
-                            .size(150.dp)
-                    )
-                }
+                )
             }
         }
+    }
+}
+
+@Composable
+fun HomeText(){
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center
+    ){
+        Text(
+            text = "LIB TIMER",
+            style = TextStyle(
+                color = Color.White,
+                fontSize = 14.sp
+            )
+        )
     }
 }
 
